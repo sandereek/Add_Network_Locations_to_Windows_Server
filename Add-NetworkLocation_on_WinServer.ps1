@@ -1,5 +1,5 @@
-function Add-NetworkLocation
-{ <#
+function Add-NetworkLocation {
+<#
     Author: 
         
         Tom White, 2015.
@@ -77,16 +77,30 @@ function Add-NetworkLocation
 
 function Add-HEINEKENNetworkLocation {
 
+<#
+    Author: 
+        
+        Sander Eek, 2020
+    
+    Description:
+
+    Converts a UNC path into a Network location procesable by the Add-NetworkLocation
+
+    Example:
+
+    Add-HEINEKENNetworkLocation -networkLocation "\\at1slnz100.at1.heiway.net\dat\linien\oi\03_Sekretariat"
+#>
+
+
     param
     (
         [Parameter(Mandatory = $true)][string]$networkLocation
     )
-
-    # nLastIndexOf$ = $networkLocation.LastIndexOf('\')
+    
     $nLastIndexOf = $networkLocation.LastIndexOf('\')
     $nlength = $networkLocation.Length
     $nNumChars = $nlength - $nLastIndexOf
-    $NetworkLocationName = $networkLocation.substring($nLastIndexOf+1, $nNumChars-1)
+    $NetworkLocationName = $networkLocation.substring($nLastIndexOf + 1, $nNumChars - 1)
     write-Host "-------------------------------------------------------------------------------------------------------"
     $Result = Add-NetworkLocation -networkLocationPath "$env:APPDATA\Microsoft\Windows\Network Shortcuts" -networkLocationName $NetworkLocationName -networkLocationTarget $networkLocation -Verbose 
     If (!$Result) { pause }
