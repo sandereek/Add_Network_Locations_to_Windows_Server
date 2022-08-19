@@ -97,6 +97,7 @@ function Add-HEINEKENNetworkLocation {
         [Parameter(Mandatory = $true)][string]$networkLocation
     )
     
+
     $nLastIndexOf = $networkLocation.LastIndexOf('\')
     $nlength = $networkLocation.Length
     $nNumChars = $nlength - $nLastIndexOf
@@ -108,3 +109,5 @@ function Add-HEINEKENNetworkLocation {
 
 
 
+write-host "file loaded"
+pause
