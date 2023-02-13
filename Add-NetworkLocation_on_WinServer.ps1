@@ -94,14 +94,17 @@ function Add-HEINEKENNetworkLocation {
 
     param
     (
-        [Parameter(Mandatory = $true)][string]$networkLocation
+        [Parameter(Mandatory = $true)][string]$networkLocation,
+        [Parameter(Mandatory = $false)][string]$networkLocationName
     )
     
+    ######## ----> $NetworkLocationName Uniek maken! <----- ########
 
-    $nLastIndexOf = $networkLocation.LastIndexOf('\')
-    $nlength = $networkLocation.Length
-    $nNumChars = $nlength - $nLastIndexOf
-    $NetworkLocationName = $networkLocation.substring($nLastIndexOf + 1, $nNumChars - 1)
+    If (!$networkLocationName) {
+        $nLastIndexOf = $networkLocation.LastIndexOf('\')
+        $nlength = $networkLocation.Length
+        $nNumChars = $nlength - $nLastIndexOf
+        $NetworkLocationName = $networkLocation.substring($nLastIndexOf + 1, $nNumChars - 1) } 
     write-Host "-------------------------------------------------------------------------------------------------------"
     $Result = Add-NetworkLocation -networkLocationPath "$env:APPDATA\Microsoft\Windows\Network Shortcuts" -networkLocationName $NetworkLocationName -networkLocationTarget $networkLocation -Verbose 
     If (!$Result) { pause }
