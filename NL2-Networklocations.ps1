@@ -3,6 +3,12 @@
 # Add-HEINEKENNetworkLocation -networkLocation "\\UNCpath\Share\Folder" -networklocationname "Networklocationname"
 # Network locations are stored in %appdata%\Microsoft\Windows\Network Shortcuts
 
+### Two New Ones
+Add-HEINEKENNetworkLocation -networkLocation "\\nl2sbunfile01.nl2.heiway.net\DFSRoot$\V\DataProj\wg-Laboratorium"
+Add-HEINEKENNetworkLocation -networkLocation "\\nl2sbunfile01.nl2.heiway.net\DFSRoot$\V\DataProj\wg-Ingred-Decl"
+
+Pause
+
 
 ### Networklocations for 2023-08 Migrations
 Add-HEINEKENNetworkLocation -networkLocation "\\nl2sbunfile01.nl2.heiway.net\DepartmentData\Supply Chain\Supply Chain Planning\ASAfroepen"
